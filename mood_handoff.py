@@ -26,15 +26,12 @@ class ActivitySuggesterAgent:
         else:
             return "You're doing fine! No activity needed."
 
-# Main execution
 if __name__ == "__main__":
     user_input = input("👤 How are you feeling today? ")
 
-    # Run Mood Analyzer
     mood = Runner.run(MoodAnalyzerAgent(), user_input)
     print(f"🧠 Detected Mood: {mood}")
-
-    # Handoff to Activity Suggester if needed
+    
     if mood in ["sad", "stressed"]:
         suggestion = Runner.run(ActivitySuggesterAgent(), mood)
         print(f"🎯 Suggested Activity: {suggestion}")
